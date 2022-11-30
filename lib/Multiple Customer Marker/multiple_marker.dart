@@ -31,12 +31,12 @@ class _MultipleMarkerState extends State<MultipleMarker> {
     'images/car1.png',
     'images/car2.png',
     'images/car3.png',
-    'images4/car.png',
+    'images/car4.png',
     'images/car5.png'
   ];
 
-  final List<Marker> _marker = <Marker>[Marker(markerId: MarkerId('1'),position: LatLng(34.175330, 71.859783))];
-  final List<LatLng> _latlng = <LatLng>[
+  final List<Marker> _marker = [Marker(markerId: MarkerId('1'),position: LatLng(34.175330, 71.859783))];
+  final List<LatLng> _latlng = [
     LatLng(34.175330, 71.859783),
     LatLng(34.176661, 71.866949),
     LatLng(34.176408, 71.866227),
@@ -53,8 +53,9 @@ class _MultipleMarkerState extends State<MultipleMarker> {
   );
 
   loadData()async{
-    for(int i=0; i < _marker.length; i++){
-      final  Uint8List markerIcon = await getBytesFromAssets(images[i], 100);
+    for(int i=0; i < images.length; i++){
+      print('images: ${_marker[i]}');
+      var markerIcon = await getBytesFromAssets(images[i], 100);
       _marker.add(
         Marker(markerId: MarkerId(i.toString()),
           position: _latlng[i],
@@ -80,9 +81,12 @@ class _MultipleMarkerState extends State<MultipleMarker> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-          initialCameraPosition: _kLake,
+          initialCameraPosition: const CameraPosition(
+              target: LatLng(34.175330, 71.859783),
+            zoom: 14.0,
+          ),
         mapType: MapType.normal,
-        myLocationButtonEnabled: true,
+        // myLocationButtonEnabled: true,
         myLocationEnabled: true,
         markers: Set<Marker>.of(_marker),
         onMapCreated: (GoogleMapController controller){

@@ -41,6 +41,7 @@ dependencies:
   geolocator: ^9.0.2
   uuid: ^3.0.7
   http: ^0.13.5
+  custom_info_window: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -72,7 +73,13 @@ flutter:
      - images/car3.png
      - images/car4.png
      - images/car5.png
-
+     - assets/maptheme/silver_theme.json
+     - assets/maptheme/dark_theme.json
+     - assets/maptheme/aubergine_theme.json
+     - assets/maptheme/retro_theme.json
+     - assets/maptheme/night_theme.json
+     - assets/maptheme/standard_theme.json
+     -
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
